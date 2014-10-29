@@ -1,0 +1,28 @@
+<h2>FORM</h2>
+
+<%= simple_form_for @reservation do |f| %>
+  <%= f.input :start, as: :string, input_html: { id: 'from' } %>
+  <%= f.input :end, as: :string, input_html: { id: 'to' } %>
+  <%= f.button :submit %>
+<% end %>
+
+<script type="text/javascript">
+$(function() {
+    $( "#from" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+</script>

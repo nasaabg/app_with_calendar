@@ -16,6 +16,7 @@ gem 'spring',        group: :development
 gem 'autoprefixer-rails'
 gem 'font-awesome-rails'
 gem 'high_voltage'
+gem 'jquery-ui-rails'
 gem 'simple_form'
 
 group :development do
