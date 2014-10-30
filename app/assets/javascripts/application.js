@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 //= require moment.min.js
 //= require jquery.min.js
+//= require jquery.ui.datepicker
 //= require_tree .

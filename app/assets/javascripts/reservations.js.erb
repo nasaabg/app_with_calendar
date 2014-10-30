@@ -1,0 +1,24 @@
+
+$(document).ready(function() {
+  
+    $('#calendar').fullCalendar({
+        
+       eventSources: [{
+            url: '/reservations.json',
+            color: '#D45858',
+            textColor: 'white'
+        }],
+       dayClick: function(date, jsEvent, view) {
+        $(this).css('background-color', '#D45858');
+       }
+    });
+
+});
+
+
+
+// eventAfterRender: function(event, element, view) {
+//                       var height = $(".fc-week").height() - $(".fc-day-number").height()-10;
+//                       $(element).css('height',height),
+//                       $(element).css('opacity', '0.5')
+//                     },
