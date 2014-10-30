@@ -1,3 +1,38 @@
 <h1>New</h1>
 
 <%= render 'form' %>
+<%= @table %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+  var unavailableDates = <%= @table %>
+
+  function unavailable(date) {
+        dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+        if ($.inArray(dmy, unavailableDates) == -1) {
+            return [true, ""];
+        } else {
+            return [false, "", "Unavailable"];
+        }
+    }
+
+
+  $( "#from" ).datepicker({
+      dateFormat: 'yy-mm-dd',
+      minDate: 0,
+      beforeShowDay: unavailable,
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+
+    $( "#to" ).datepicker({
+      dateFormat: 'yy-mm-dd',
+      beforeShowDay: unavailable,
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+});
+</script>
