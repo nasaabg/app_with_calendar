@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Flat.destroy_all
+
+
+flat  = Flat.create(address: "Kraków, Jana Kasprowicza 16", number_of_rooms: 3, area: 74)
+
+puts "FLATS_CREATED"
