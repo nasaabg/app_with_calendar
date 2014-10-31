@@ -18,3 +18,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+
+
+.flat_icon{
+  margin-right: 10px;
+}
+
+.navbar-custom {
+    background-color: #14151E;
+    opacity: 0.7;
+    letter-spacing: 1px;
+    font-weight:lighter;
+}
+.navbar-custom a{
+  color: #FFFEF9;
+}
+.navbar-custom a:hover{
+  color: #14151E;
+}
