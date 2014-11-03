@@ -14,6 +14,7 @@ gem 'bootstrap-sass'
 gem 'spring',        group: :development
 
 gem 'autoprefixer-rails'
+# gem 'turbolinks'
 gem 'font-awesome-rails'
 gem 'high_voltage'
 gem 'jquery-ui-rails'

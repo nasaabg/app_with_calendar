@@ -157,12 +157,15 @@ h6 {
 }
 .icons {
     font-size: 4em;
+    
+    text-align: center;
+    
 }
 
 
 
 footer {
-    padding: 50px 0;
+    padding: 20px 0;
     background-color: #f8f8f8;
 }
 

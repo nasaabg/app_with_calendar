@@ -1,12 +1,11 @@
-<h1>New</h1>
-
-<%= render 'form' %>
-<%= @table %>
+<div class="reservation">
+  <%= render 'form' %>
+</div>
 
 <script type="text/javascript">
 $(document).ready(function() {
 
-  var unavailableDates = <%= @table %>
+  var unavailableDates = <%= @unavailable_dates %>
 
   function unavailable(date) {
         dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();

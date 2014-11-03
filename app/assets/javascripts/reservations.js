@@ -1,18 +1,12 @@
 
-$(document).ready(function() {
-  
-    $('#calendar').fullCalendar({
-        
+$(document).ready(function() { 
+    $('#calendar').fullCalendar({        
        eventSources: [{
             url: '/reservations.json',
-            color: '#D45858',
+            color: '#513F3F',
             textColor: 'white'
-        }],
-       dayClick: function(date, jsEvent, view) {
-        $(this).css('background-color', '#D45858');
-       }
+        }]
     });
-
 });
 
 

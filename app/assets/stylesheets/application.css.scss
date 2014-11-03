@@ -18,3 +18,34 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+
+.letter-space{
+  letter-spacing: 1px;
+}
+
+.navbar-custom {
+    background-color: #14151E;
+    opacity: 0.7;
+    letter-spacing: 1px;
+    font-weight:lighter;
+}
+
+.navbar-custom a{
+  color: #FFFEF9;
+}
+
+.navbar-custom a:hover{
+  color: #14151E;
+}
+
+.reservation-btn{
+  background-color: #ff5a5f;
+  opacity: 0.9;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.reservation-btn:hover{
+  background-color: #E8CACA;
+}
+
