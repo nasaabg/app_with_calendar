@@ -38,8 +38,7 @@
             <div class="col-md-5">
               <div id="calendar"></div>
               <br>           
-             <p class="text-center light_font"> <%= link_to "POPROŚ O REZERWACJĘ", reservations_path, class: "reservation-btn btn btn-block" %>
-            </p>
+              <%= link_to "POPROŚ O REZERWACJĘ", new_reservation_path, class: "reservation-btn btn btn-block" %>
             </div>
             <!-- /.col-md-5 -->
         </div>    
@@ -126,10 +125,10 @@
               </div>
               <div class="col-md-9 light_font">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-7">
                     <p>Minimalny czas pobytu: <strong>3 dni</strong></p>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-5">
                     <a href="#" class"to_calendar">Zobacz kalendarz</a>
                   </div>
                 </div>
@@ -148,4 +147,3 @@
         <!-- /.row -->
     </div>
     <!-- /.container -->
-

@@ -19,9 +19,8 @@
 @import "bootstrap";
 @import "font-awesome";
 
-
-.flat_icon{
-  margin-right: 10px;
+.letter-space{
+  letter-spacing: 1px;
 }
 
 .navbar-custom {
@@ -30,9 +29,23 @@
     letter-spacing: 1px;
     font-weight:lighter;
 }
+
 .navbar-custom a{
   color: #FFFEF9;
 }
+
 .navbar-custom a:hover{
   color: #14151E;
 }
+
+.reservation-btn{
+  background-color: #ff5a5f;
+  opacity: 0.9;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.reservation-btn:hover{
+  background-color: #E8CACA;
+}
+
