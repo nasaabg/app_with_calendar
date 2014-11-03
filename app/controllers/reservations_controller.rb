@@ -32,7 +32,7 @@ private
 
     def save_reservation
       if @reservation.save
-        redirect_to reservations_path
+        redirect_to flat_path
       end
     end
 
