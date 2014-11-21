@@ -9,6 +9,7 @@ class ReservationsController < ApplicationController
   def new
     load_unavailable_dates
     build_reservation
+    build_customer
   end
 
   def create
@@ -17,6 +18,10 @@ class ReservationsController < ApplicationController
   end
 
 private
+
+    def reservation_scope
+      Reservation.all
+    end
 
     def load_reservations
       @reservations = reservation_scope
@@ -30,6 +35,10 @@ private
       @reservation = reservation_scope.build(reservation_params)
     end
 
+    def build_customer
+      @reservation.build_customer
+    end
+
     def save_reservation
       if @reservation.save
         redirect_to flat_path
@@ -38,11 +47,8 @@ private
 
     def reservation_params
       reservation_params = params[:reservation]
-      reservation_params ? params.require(:reservation).permit(:checkin, :checkout) : {}
-    end
-
-    def reservation_scope
-      Reservation.all
+      reservation_params ? params.require(:reservation).permit(:checkin, :checkout,
+       customer_attributes: [:name, :surname, :email, :phone]) : {}
     end
 
     def load_unavailable_dates

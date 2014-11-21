@@ -3,7 +3,10 @@ class Reservation < ActiveRecord::Base
   validates_presence_of :checkin,  message: "Data początkowa nie może być pusta."
   validates_presence_of :checkout, message: "Data końcowa nie może być pusta."
   validate :correct_choosen_term
-  validate :duration_of_reservation, if: :checkin? and :checkin?
+  validate :duration_of_reservation, if: :checkin? and :checkout?
+
+  has_one :customer, dependent: :destroy
+  accepts_nested_attributes_for :customer
 
   def as_json (options={}){ 
      :start => checkin,

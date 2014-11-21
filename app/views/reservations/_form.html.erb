@@ -20,6 +20,16 @@
                               <label>Koniec</label><br>
                                 <%= f.text_field :checkout, id: "to", placeholder: "rr-mm-dd" %>
                             </div>
+                                <%= f.fields_for :customer do |customer_fields| %>
+                                    <%= customer_fields.label :name %>
+                                    <%= customer_fields.text_field :name %>
+                                    <%= customer_fields.label :surname %>
+                                    <%= customer_fields.text_field :surname %>
+                                    <%= customer_fields.label :email %>
+                                    <%= customer_fields.text_field :email %>
+                                    <%= customer_fields.label :phone %>
+                                    <%= customer_fields.text_field :phone %>
+                                <% end %>
 
                            <!--  <div class="form-group">
                                 <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
