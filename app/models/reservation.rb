@@ -1,5 +1,7 @@
 class Reservation < ActiveRecord::Base
 
+  after_save :send_reservation_details
+
   validates_presence_of :checkin,  message: "Data początkowa nie może być pusta."
   validates_presence_of :checkout, message: "Data końcowa nie może być pusta."
   validate :correct_choosen_term
@@ -14,12 +16,14 @@ class Reservation < ActiveRecord::Base
      :title => "Rezerwacja"}
   end
 
-private
+protected
+
+  def send_reservation_details
+    ReservationMailer.reservation_details(self).deliver
+  end
 
   def correct_choosen_term
-    # occupied_terms = Reservation.where("checkout > ?", DateTime.now)
     existing_reservations = Reservation.where("(checkin BETWEEN ? AND ?) AND (checkout BETWEEN ? AND ?)", checkin, checkout, checkin, checkout).count
-    # binding.pry
     existing_reservations > 0 ? errors.add(:base, 'Termin zachodzi na inna rezerwacje.') : true
   end
 

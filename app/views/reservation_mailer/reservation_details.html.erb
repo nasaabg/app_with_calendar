@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      body{ font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif; }
+      /*h1{color: #257059}
+      h2{color: #468C77}
+      h4{color: #326F12}
+      p{color:green}*/
+    </style>
+  </head>
+  <body>
+    <h1>Witaj, Janek!</h1>
+    <h2>Dokonano rezerwacji na twojej stronie.</h2>
+    <h4>Checkin: <%= @reservation.checkin %></h4>
+    <h4>Checkout: <%= @reservation.checkout %></h4>
+
+    <p>Imie: <%= @customer.name %></p>
+    <p>Nazwisko: <%= @customer.surname %></p>
+    <p>Emial: <%= @customer.email  if @customer.email %></p>
+    <p>Telefon: <%= @customer.phone if @customer.phone %></p>
+
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

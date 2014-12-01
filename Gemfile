@@ -19,11 +19,13 @@ gem 'font-awesome-rails'
 gem 'high_voltage'
 gem 'jquery-ui-rails'
 gem 'simple_form'
+gem 'figaro'
 
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "quiet_assets"
+  gem "mailcatcher"
 end
 
 group :development, :test do
