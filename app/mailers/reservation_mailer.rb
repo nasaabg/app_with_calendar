@@ -1,9 +1,9 @@
 class ReservationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "Strona Rezerwacji"
 
   def reservation_details(reservation)
     @reservation = reservation
     @customer = @reservation.customer
-    mail(to: "nasaabg@interia.pl", subject: "Dokonano rezerwacji")
+    mail(to: "janek.kurzydlo@gmail.com", subject: "Dokonano rezerwacji")
   end
 end

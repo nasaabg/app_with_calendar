@@ -3,7 +3,7 @@ class Customer < ActiveRecord::Base
   validates_presence_of :name, message: "Proszę podać imię."
   validates_presence_of :surname, message: "Proszę podać nazwisko."
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: "Nieprawidłowy adres e-mail." }, if: :email?
-  validates :phone, format: { with: /[0-9]/, message: "Telefon - nieprawidłowe znaki." }
+  validates :phone, format: { with: /[0-9]/, message: "Telefon - nieprawidłowe znaki." }, if: :phone?
   validates :phone, length: { in: 6..9, message: "Nieprawidłowy nr telefonu." }, if: :phone?
   validate :email_or_phone_exist
 

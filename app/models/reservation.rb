@@ -1,6 +1,6 @@
 class Reservation < ActiveRecord::Base
 
-  after_save :send_reservation_details
+  # after_save :send_reservation_details
 
   validates_presence_of :checkin,  message: "Data początkowa nie może być pusta."
   validates_presence_of :checkout, message: "Data końcowa nie może być pusta."
@@ -18,9 +18,9 @@ class Reservation < ActiveRecord::Base
 
 protected
 
-  def send_reservation_details
-    ReservationMailer.reservation_details(self).deliver
-  end
+  # def send_reservation_details
+  #   ReservationMailer.reservation_details(self).deliver
+  # end
 
   def correct_choosen_term
     existing_reservations = Reservation.where("(checkin BETWEEN ? AND ?) AND (checkout BETWEEN ? AND ?)", checkin, checkout, checkin, checkout).count

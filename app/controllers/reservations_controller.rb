@@ -41,6 +41,8 @@ private
 
     def save_reservation
       if @reservation.save
+        ReservationMailer.reservation_details(@reservation).deliver
+        flash[:notice] = "Dziękujemy za wysłanie prośby o rezerwację. Skontaktujemy się z Toba w najbliższym czasie."
         redirect_to flat_path
       end
     end
