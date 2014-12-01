@@ -1,5 +1,5 @@
 class ReservationMailer < ActionMailer::Base
-  default from: "Strona Rezerwacji"
+  default from: "Rezerwacje@example.com"
 
   def reservation_details(reservation)
     @reservation = reservation
