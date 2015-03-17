@@ -1,0 +1,45 @@
+<h1 class="text-center">Edycja Rezerwacji</h1>
+
+<div class="col-md-4 col-md-offset-8">
+  <%= link_to 'Pokaż', @reservation %> |
+  <%= link_to 'Wróć', reservations_path %>
+</div>
+
+<div class="reservation">
+  <%= render 'form' %>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+  var unavailableDates = <%= @unavailable_dates %>
+
+  function unavailable(date) {
+        dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+        if ($.inArray(dmy, unavailableDates) == -1) {
+            return [true, ""];
+        } else {
+            return [false, "", "Unavailable"];
+        }
+    }
+
+
+  $( "#from" ).datepicker({
+      dateFormat: 'yy-mm-dd',
+      minDate: 0,
+      beforeShowDay: unavailable,
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+
+    $( "#to" ).datepicker({
+      dateFormat: 'yy-mm-dd',
+      beforeShowDay: unavailable,
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+});
+</script>

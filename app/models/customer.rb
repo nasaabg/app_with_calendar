@@ -9,6 +9,10 @@ class Customer < ActiveRecord::Base
 
   belongs_to :reservation
 
+  def fullname
+    name + " " + surname
+  end
+
 
   private
 

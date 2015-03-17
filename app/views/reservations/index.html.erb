@@ -1,28 +1,39 @@
+ <div class="container">
+    <div class="row">
+        <h1 class="text-center">Rezerwacje</h1>
 
-<h1>INDEX</h1>
+        <div class="col-md-12">
+          <div class="pull-right">
+            <%= link_to 'Nowa Rezerwacja', new_reservation_path, class: "btn btn-primary" %>
+          </div>
+        </div>
 
-<table class="table table-striped pretty">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Początek rezerwacji</th>
-          <th>Koniec rezerwacji</th>
-          <th>Ilośc dni</th>
-          <th>Data stworzenia rezerwacji</th>
-        </tr>
-      </thead>
 
-      <tbody>
-        <% @reservations.each do |reservation| %>
-          <tr>
-            <td><%= reservation.id %></td>
-            <td><%= reservation.checkin %></td>
-            <td><%= reservation.checkout %></td>
-            <td><%= (reservation.checkout - reservation.checkin).to_i %></td>
-            <td><%= reservation.created_at %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Start</th>
+                  <th>Koniec</th>
+                  <th>Zainteresowany</th>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
 
+              <tbody>
+                <% @reservations.each do |reservation| %>
+                  <tr>
+                    <th><%= reservation.id %></th>
+                    <td><%= reservation.checkin %></td>
+                    <td><%= reservation.checkout %></td>
+                    <td><%= reservation.customer.fullname %></td>
+                    <td><%= link_to 'Pokaż', reservation, class: "btn btn-default" %></td>
+                    <td><%= link_to 'Edytuj', edit_reservation_path(reservation), class: "btn btn-default" %></td>
+                    <td><%= link_to 'Usuń', reservation, class: "btn btn-danger", method: :delete, data: { confirm: 'Jestes pewny?' } %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+      </div>
+  </div>
 

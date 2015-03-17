@@ -30,8 +30,7 @@ class Reservation < ActiveRecord::Base
         checkout
       )
 
-    errors.add(:base, 'Termin zachodzi na inna rezerwacje.') unless reserved.empty?
-    
+    errors.add(:base, 'Termin zachodzi na inna rezerwacje.') unless reserved.empty?    
   end
 
   def duration_of_reservation

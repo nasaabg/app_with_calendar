@@ -19,6 +19,11 @@
 @import "bootstrap";
 @import "font-awesome";
 
+body {
+  padding-top: 4%;
+  min-height: 600px;
+}
+
 .letter-space{
   letter-spacing: 1px;
 }
