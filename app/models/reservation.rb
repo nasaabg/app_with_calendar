@@ -16,15 +16,22 @@ class Reservation < ActiveRecord::Base
      :title => "Rezerwacja"}
   end
 
-protected
-
   # def send_reservation_details
   #   ReservationMailer.reservation_details(self).deliver
   # end
 
   def correct_choosen_term
-    existing_reservations = Reservation.where("(checkin BETWEEN ? AND ?) AND (checkout BETWEEN ? AND ?)", checkin, checkout, checkin, checkout).count
-    existing_reservations > 0 ? errors.add(:base, 'Termin zachodzi na inna rezerwacje.') : true
+    reserved = 
+      Reservation.where(
+        '(checkin <= ? AND checkout >= ?) OR (checkin >= ? AND checkin <= ?)',
+        checkin,
+        checkin,
+        checkin,
+        checkout
+      )
+
+    errors.add(:base, 'Termin zachodzi na inna rezerwacje.') unless reserved.empty?
+    
   end
 
   def duration_of_reservation

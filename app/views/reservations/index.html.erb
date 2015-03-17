@@ -1,4 +1,28 @@
 
 <h1>INDEX</h1>
 
+<table class="table table-striped pretty">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Początek rezerwacji</th>
+          <th>Koniec rezerwacji</th>
+          <th>Ilośc dni</th>
+          <th>Data stworzenia rezerwacji</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @reservations.each do |reservation| %>
+          <tr>
+            <td><%= reservation.id %></td>
+            <td><%= reservation.checkin %></td>
+            <td><%= reservation.checkout %></td>
+            <td><%= (reservation.checkout - reservation.checkin).to_i %></td>
+            <td><%= reservation.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
 

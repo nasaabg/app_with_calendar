@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
     respond_to :html, :json
 
   def index
-    load_reservations
+    @reservations = Reservation.all
     respond_with @reservations
   end
 
@@ -24,15 +24,15 @@ private
     end
 
     def load_reservations
-      @reservations = reservation_scope
+      @reservations = Reservation.all
     end
 
     def load_reservation
-      @reservation = reservation_scope.find_by_id(params[:id])
+      @reservation = Reservation.find_by_id(params[:id])
     end
 
     def build_reservation
-      @reservation = reservation_scope.build(reservation_params)
+      @reservation = Reservation.new(reservation_params)
     end
 
     def build_customer
