@@ -15,8 +15,11 @@
                   <th>Id</th>
                   <th>Start</th>
                   <th>Koniec</th>
+                  <th>Ilość dni</th>
                   <th>Zainteresowany</th>
-                  <th colspan="3"></th>
+                  <th>E-mail</th>
+                  <th>Telefon</th>
+                  <th colspan="2"></th>
                 </tr>
               </thead>
 
@@ -26,8 +29,10 @@
                     <th><%= reservation.id %></th>
                     <td><%= reservation.checkin %></td>
                     <td><%= reservation.checkout %></td>
+                    <td><%= (reservation.checkout - reservation.checkin).to_i %></td>
                     <td><%= reservation.customer.fullname %></td>
-                    <td><%= link_to 'Pokaż', reservation, class: "btn btn-default" %></td>
+                    <td><%= reservation.customer.email %></td>
+                    <td><%= reservation.customer.phone%></td>
                     <td><%= link_to 'Edytuj', edit_reservation_path(reservation), class: "btn btn-default" %></td>
                     <td><%= link_to 'Usuń', reservation, class: "btn btn-danger", method: :delete, data: { confirm: 'Jestes pewny?' } %></td>
                   </tr>

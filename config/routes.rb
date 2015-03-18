@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
 
   
+  devise_for :admins
   # root 'reservations#index'
   resource :flat
-  resources :reservations
+  resources :reservations, except: :show do
+    collection do
+      get 'booked_reservations'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

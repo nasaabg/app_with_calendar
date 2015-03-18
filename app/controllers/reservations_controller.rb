@@ -1,6 +1,12 @@
 class ReservationsController < ApplicationController
+  before_action :authenticate_admin!, only: [:index, :edit, :update, :destroy]
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
+
+  def booked_reservations
+    @reservations = Reservation.all
+    respond_with @reservations
+  end
   # GET /reservations
   # GET /reservations.json
   def index
@@ -10,8 +16,8 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/1
   # GET /reservations/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /reservations/new
   def new
@@ -33,7 +39,7 @@ class ReservationsController < ApplicationController
     respond_to do |format|
       if @reservation.save
         ReservationMailer.reservation_details(@reservation).deliver
-        format.html { redirect_to @reservation, notice: "Dziękujemy za wysłanie prośby o rezerwację. Skontaktujemy się z Toba w najbliższym czasie." }
+        format.html { redirect_to flat_path, notice: "Dziękujemy za wysłanie prośby o rezerwację. Skontaktujemy się z Toba w najbliższym czasie." }
         format.json { render :show, status: :created, location: @reservation }
       else
         load_unavailable_dates
@@ -48,7 +54,7 @@ class ReservationsController < ApplicationController
   def update
     respond_to do |format|
       if @reservation.update(reservation_params)
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
+        format.html { redirect_to reservations_url, notice: 'Reservation was successfully updated.' }
         format.json { render :show, status: :ok, location: @reservation }
       else
         format.html { render :edit }

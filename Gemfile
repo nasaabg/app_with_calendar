@@ -20,6 +20,7 @@ gem 'high_voltage'
 gem 'jquery-ui-rails'
 gem 'simple_form'
 gem 'figaro'
+gem 'devise'
 
 group :development do
   gem "better_errors"

@@ -2,7 +2,7 @@
 $(document).ready(function() { 
     $('#calendar').fullCalendar({        
        eventSources: [{
-            url: '/reservations.json',
+            url: '/reservations/booked_reservations.json',
             color: '#513F3F',
             textColor: 'white'
         }]
