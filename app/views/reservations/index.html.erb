@@ -19,7 +19,8 @@
                   <th>Zainteresowany</th>
                   <th>E-mail</th>
                   <th>Telefon</th>
-                  <th colspan="2"></th>
+                  <th>Potwierdzone</th>
+                  <th colspan="3"></th>
                 </tr>
               </thead>
 
@@ -33,6 +34,13 @@
                     <td><%= reservation.customer.fullname %></td>
                     <td><%= reservation.customer.email %></td>
                     <td><%= reservation.customer.phone%></td>
+                    <td><%= reservation.friendly_confirmed_info %> </td>
+                    <td><% if reservation.confirmed? %>
+                          <%= link_to "Anuluj", cancel_reservation_path(reservation), class: "btn btn-warning", data: { confirm: 'Jestes pewny?' } %>
+                        <% else %>
+                          <%= link_to "Potwiedź", confirm_reservation_path(reservation), class: "btn btn-success" %>
+                        <% end %>
+                    </td>
                     <td><%= link_to 'Edytuj', edit_reservation_path(reservation), class: "btn btn-default" %></td>
                     <td><%= link_to 'Usuń', reservation, class: "btn btn-danger", method: :delete, data: { confirm: 'Jestes pewny?' } %></td>
                   </tr>

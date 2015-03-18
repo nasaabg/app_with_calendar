@@ -1,7 +1,17 @@
 class ReservationsController < ApplicationController
-  before_action :authenticate_admin!, only: [:index, :edit, :update, :destroy]
-  before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:index, :edit, :update, :destroy, :confirm, :cancel]
+  before_action :set_reservation, only: [:show, :edit, :update, :destroy, :confirm, :cancel]
   respond_to :html, :json
+
+  def confirm
+    @reservation.confirm!
+    redirect_to reservations_path
+  end
+
+  def cancel
+    @reservation.cancel!
+    redirect_to reservations_path
+  end
 
   def booked_reservations
     @reservations = Reservation.all
@@ -10,7 +20,7 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = Reservation.all
+    @reservations = Reservation.order(created_at: :asc)
     respond_with @reservations
   end
 
@@ -54,7 +64,7 @@ class ReservationsController < ApplicationController
   def update
     respond_to do |format|
       if @reservation.update(reservation_params)
-        format.html { redirect_to reservations_url, notice: 'Reservation was successfully updated.' }
+        format.html { redirect_to reservations_url, notice: 'Rezerwacja została uaktualniona.' }
         format.json { render :show, status: :ok, location: @reservation }
       else
         format.html { render :edit }
@@ -68,7 +78,7 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation.destroy
     respond_to do |format|
-      format.html { redirect_to reservations_url, notice: 'Reservation was successfully destroyed.' }
+      format.html { redirect_to reservations_url, notice: 'Rezerwacja została usunięta.' }
       format.json { head :no_content }
     end
   end

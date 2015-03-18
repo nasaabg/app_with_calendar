@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     collection do
       get 'booked_reservations'
     end
+
+    member do
+      get 'confirm'
+      get 'cancel'
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

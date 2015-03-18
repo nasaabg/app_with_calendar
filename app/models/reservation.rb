@@ -20,7 +20,22 @@ class Reservation < ActiveRecord::Base
   #   ReservationMailer.reservation_details(self).deliver
   # end
 
+  def friendly_confirmed_info
+    confirmed ? "TAK" : "NIE"
+  end
+
+  def confirm!
+    update(confirmed: true)
+  end
+
+  def cancel!
+    update(confirmed: false)
+  end
+
   def correct_choosen_term
+
+    return true unless checkin_changed? or checkout_changed?
+
     reserved = 
       Reservation.where(
         '(checkin <= ? AND checkout >= ?) OR (checkin >= ? AND checkin <= ?)',
